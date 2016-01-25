@@ -123,6 +123,16 @@ func main() {
 		Size:   Size{800, 600},
 		Layout: VBox{},
 		Children: []Widget{
+			PushButton{
+				Text: "Add",
+				OnClicked: func() {
+					model.items = append(model.items, &Person{
+						Index: model.Len() + 1,
+						Name: "xxx",
+						Age: model.Len() * 5,
+					})
+				},
+			},
 			TableView{
 				CheckBoxes:       true,
 				ColumnsOrderable: true,
