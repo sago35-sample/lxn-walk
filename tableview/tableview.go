@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/lxn/walk"
 	. "github.com/lxn/walk/declarative"
+	"sort"
 )
 
 type Person struct {
@@ -15,6 +16,8 @@ type Person struct {
 type PersonModel struct {
 	walk.TableModelBase
 	walk.SorterBase
+	sortColumn int
+	sortOrder walk.SortOrder
 	items []*Person
 }
 
@@ -45,6 +48,45 @@ func (m *PersonModel) Checked(row int) bool {
 func (m *PersonModel) SetChecked(row int, checked bool) error {
 	m.items[row].checked = checked
 	return nil
+}
+
+func (m *PersonModel) Sort(col int, order walk.SortOrder) error {
+	m.sortColumn, m.sortOrder = col, order
+
+	sort.Stable(m)
+
+	return m.SorterBase.Sort(col, order)
+}
+
+func (m *PersonModel) Len() int {
+	return len(m.items)
+}
+
+func (m *PersonModel) Less(i, j int) bool {
+	a, b := m.items[i], m.items[j]
+
+	c := func(ls bool) bool {
+		if m.sortOrder == walk.SortAscending {
+			return ls
+		}
+
+		return !ls
+	}
+
+	switch m.sortColumn {
+	case 0:
+		return c(a.Index < b.Index)
+	case 1:
+		return c(a.Name < b.Name)
+	case 2:
+		return c(a.Age < b.Age)
+	}
+
+	panic("unreachable")
+}
+
+func (m *PersonModel) Swap(i, j int) {
+	m.items[i], m.items[j] = m.items[j], m.items[i]
 }
 
 func NewPersonModel() *PersonModel {
