@@ -50,6 +50,7 @@ func (m *PersonModel) SetChecked(row int, checked bool) error {
 	return nil
 }
 
+// TableViewをsort可能にするには、walk.SorterBase、Sort()、Len()、Less()、Swap()の実装が必要
 func (m *PersonModel) Sort(col int, order walk.SortOrder) error {
 	m.sortColumn, m.sortOrder = col, order
 
