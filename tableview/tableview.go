@@ -16,10 +16,12 @@ type PersonModel struct {
 	items []*Person
 }
 
+// TableViewを実装する際、RowCount()とValue()が必要
 func (m *PersonModel) RowCount() int {
 	return len(m.items)
 }
 
+// TableViewを実装する際、RowCount()とValue()が必要
 func (m *PersonModel) Value(row, col int) interface{} {
 	item := m.items[row]
 
@@ -40,20 +42,20 @@ func NewPersonModel() *PersonModel {
 
 	m.items[0] = &Person{
 		Index: 0,
-		Name: "山田",
-		Age: 20,
+		Name:  "山田",
+		Age:   20,
 	}
 
 	m.items[1] = &Person{
 		Index: 1,
-		Name: "鈴木",
-		Age: 21,
+		Name:  "鈴木",
+		Age:   21,
 	}
 
 	m.items[2] = &Person{
 		Index: 2,
-		Name: "田中",
-		Age: 22,
+		Name:  "田中",
+		Age:   22,
 	}
 
 	return m
