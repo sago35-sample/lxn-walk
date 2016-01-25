@@ -17,8 +17,8 @@ type PersonModel struct {
 	walk.TableModelBase
 	walk.SorterBase
 	sortColumn int
-	sortOrder walk.SortOrder
-	items []*Person
+	sortOrder  walk.SortOrder
+	items      []*Person
 }
 
 // TableViewを実装する際、RowCount()とValue()が必要
