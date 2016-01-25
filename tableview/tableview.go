@@ -6,9 +6,10 @@ import (
 )
 
 type Person struct {
-	Index int
-	Name  string
-	Age   int
+	Index   int
+	Name    string
+	Age     int
+	checked bool
 }
 
 type PersonModel struct {
@@ -34,6 +35,15 @@ func (m *PersonModel) Value(row, col int) interface{} {
 		return item.Age
 	}
 	panic("unexpected col")
+}
+
+func (m *PersonModel) Checked(row int) bool {
+	return m.items[row].checked
+}
+
+func (m *PersonModel) SetChecked(row int, checked bool) error {
+	m.items[row].checked = checked
+	return nil
 }
 
 func NewPersonModel() *PersonModel {
@@ -70,6 +80,7 @@ func main() {
 		Layout: VBox{},
 		Children: []Widget{
 			TableView{
+				CheckBoxes: true,
 				Columns: []TableViewColumn{
 					{Title: "#"},
 					{Title: "名前"},
