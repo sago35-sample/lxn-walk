@@ -131,6 +131,7 @@ func main() {
 						Name: "xxx",
 						Age: model.Len() * 5,
 					})
+					model.PublishRowsReset()
 				},
 			},
 			TableView{
