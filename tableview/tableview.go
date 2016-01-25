@@ -14,6 +14,7 @@ type Person struct {
 
 type PersonModel struct {
 	walk.TableModelBase
+	walk.SorterBase
 	items []*Person
 }
 
@@ -80,8 +81,9 @@ func main() {
 		Layout: VBox{},
 		Children: []Widget{
 			TableView{
-				CheckBoxes: true,
-				MultiSelection: true,
+				CheckBoxes:       true,
+				ColumnsOrderable: true,
+				MultiSelection:   true,
 				Columns: []TableViewColumn{
 					{Title: "#"},
 					{Title: "名前"},
