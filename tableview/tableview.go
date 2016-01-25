@@ -81,6 +81,7 @@ func main() {
 		Children: []Widget{
 			TableView{
 				CheckBoxes: true,
+				MultiSelection: true,
 				Columns: []TableViewColumn{
 					{Title: "#"},
 					{Title: "名前"},
