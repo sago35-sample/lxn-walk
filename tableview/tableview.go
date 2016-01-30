@@ -157,6 +157,9 @@ func main() {
 					{Title: "年齢"},
 				},
 				Model: mw.model,
+				OnItemActivated: func() {
+					walk.MsgBox(mw, "title", "msg", walk.MsgBoxIconInformation)
+				},
 			},
 		},
 	}.Run()
