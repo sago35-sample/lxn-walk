@@ -169,18 +169,23 @@ func main() {
 					},
 				},
 			},
-			TableView{
-				AssignTo:         &mw.tv,
-				CheckBoxes:       true,
-				ColumnsOrderable: true,
-				MultiSelection:   true,
-				Columns: []TableViewColumn{
-					{Title: "#"},
-					{Title: "名前"},
-					{Title: "年齢"},
+			Composite{
+				Layout: VBox{},
+				Children: []Widget{
+					TableView{
+						AssignTo:         &mw.tv,
+						CheckBoxes:       true,
+						ColumnsOrderable: true,
+						MultiSelection:   true,
+						Columns: []TableViewColumn{
+							{Title: "#"},
+							{Title: "名前"},
+							{Title: "年齢"},
+						},
+						Model:           mw.model,
+						OnItemActivated: mw.tv_ItemAtivated,
+					},
 				},
-				Model:           mw.model,
-				OnItemActivated: mw.tv_ItemAtivated,
 			},
 		},
 	}.Run()
