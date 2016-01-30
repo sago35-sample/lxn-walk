@@ -145,6 +145,26 @@ func main() {
 							mw.model.PublishRowsReset()
 						},
 					},
+					PushButton{
+						Text: "Delete",
+						OnClicked: func() {
+							items := []*Person{}
+							remove := mw.tv.SelectedIndexes()
+							for i, x := range mw.model.items {
+								remove_ok := false
+								for _, j := range remove {
+									if i == j {
+										remove_ok = true
+									}
+								}
+								if !remove_ok {
+									items = append(items, x)
+								}
+							}
+							mw.model.items = items
+							mw.model.PublishRowsReset()
+						},
+					},
 				},
 			},
 			TableView{
