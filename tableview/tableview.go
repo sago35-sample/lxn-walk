@@ -118,6 +118,7 @@ func NewPersonModel() *PersonModel {
 type PersonMainWindow struct {
 	*walk.MainWindow
 	model *PersonModel
+	tv    *walk.TableView
 }
 
 func main() {
@@ -147,6 +148,7 @@ func main() {
 				},
 			},
 			TableView{
+				AssignTo:         &mw.tv,
 				CheckBoxes:       true,
 				ColumnsOrderable: true,
 				MultiSelection:   true,
@@ -163,5 +165,9 @@ func main() {
 }
 
 func (mw *PersonMainWindow) tv_ItemAtivated() {
-	walk.MsgBox(mw, "title", "msg", walk.MsgBoxIconInformation)
+	msg := ``
+	for _, i := range mw.tv.SelectedIndexes() {
+		msg = msg + "\n" + mw.model.items[i].Name
+	}
+	walk.MsgBox(mw, "title", msg, walk.MsgBoxIconInformation)
 }
