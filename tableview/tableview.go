@@ -155,7 +155,7 @@ func main() {
 					{Title: "名前"},
 					{Title: "年齢"},
 				},
-				Model: mw.model,
+				Model:           mw.model,
 				OnItemActivated: mw.tv_ItemAtivated,
 			},
 		},
