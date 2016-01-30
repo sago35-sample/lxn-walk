@@ -143,6 +143,7 @@ func main() {
 								Age:   mw.model.Len() * 5,
 							})
 							mw.model.PublishRowsReset()
+							mw.tv.SetSelectedIndexes([]int{})
 						},
 					},
 					PushButton{
