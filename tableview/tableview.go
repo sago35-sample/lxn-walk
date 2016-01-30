@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/lxn/walk"
 	. "github.com/lxn/walk/declarative"
 	"sort"
@@ -165,6 +166,17 @@ func main() {
 							mw.model.items = items
 							mw.model.PublishRowsReset()
 							mw.tv.SetSelectedIndexes([]int{})
+						},
+					},
+					PushButton{
+						Text: "ExecChecked",
+						OnClicked: func() {
+							for _, x := range mw.model.items {
+								if x.checked {
+									fmt.Printf("checked: %v\n", x)
+								}
+							}
+							fmt.Println()
 						},
 					},
 				},
