@@ -156,10 +156,12 @@ func main() {
 					{Title: "年齢"},
 				},
 				Model: mw.model,
-				OnItemActivated: func() {
-					walk.MsgBox(mw, "title", "msg", walk.MsgBoxIconInformation)
-				},
+				OnItemActivated: mw.tv_ItemAtivated,
 			},
 		},
 	}.Run()
+}
+
+func (mw *PersonMainWindow) tv_ItemAtivated() {
+	walk.MsgBox(mw, "title", "msg", walk.MsgBoxIconInformation)
 }
