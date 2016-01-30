@@ -115,10 +115,16 @@ func NewPersonModel() *PersonModel {
 	return m
 }
 
+type PersonMainWindow struct {
+	*walk.MainWindow
+	model *PersonModel
+}
+
 func main() {
-	model := NewPersonModel()
+	mw := &PersonMainWindow{model: NewPersonModel()}
 
 	MainWindow{
+		AssignTo: &mw.MainWindow,
 		Title:  "TableViewサンプル",
 		Size:   Size{800, 600},
 		Layout: VBox{},
@@ -131,12 +137,12 @@ func main() {
 					PushButton{
 						Text: "Add",
 						OnClicked: func() {
-							model.items = append(model.items, &Person{
-								Index: model.Len() + 1,
-								Name: "xxx",
-								Age: model.Len() * 5,
+							mw.model.items = append(mw.model.items, &Person{
+								Index: mw.model.Len() + 1,
+								Name:  "xxx",
+								Age:   mw.model.Len() * 5,
 							})
-							model.PublishRowsReset()
+							mw.model.PublishRowsReset()
 						},
 					},
 				},
@@ -150,7 +156,7 @@ func main() {
 					{Title: "名前"},
 					{Title: "年齢"},
 				},
-				Model: model,
+				Model: mw.model,
 			},
 		},
 	}.Run()
