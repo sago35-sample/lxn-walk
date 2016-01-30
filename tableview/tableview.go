@@ -163,6 +163,7 @@ func main() {
 							}
 							mw.model.items = items
 							mw.model.PublishRowsReset()
+							mw.tv.SetSelectedIndexes([]int{})
 						},
 					},
 				},
