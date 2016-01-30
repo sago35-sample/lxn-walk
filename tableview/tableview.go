@@ -125,15 +125,14 @@ func main() {
 
 	MainWindow{
 		AssignTo: &mw.MainWindow,
-		Title:  "TableViewサンプル",
-		Size:   Size{800, 600},
-		Layout: VBox{},
+		Title:    "TableViewサンプル",
+		Size:     Size{800, 600},
+		Layout:   VBox{},
 		Children: []Widget{
 			Composite{
 				Layout: HBox{MarginsZero: true},
 				Children: []Widget{
-					HSpacer{
-					},
+					HSpacer{},
 					PushButton{
 						Text: "Add",
 						OnClicked: func() {
