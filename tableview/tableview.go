@@ -171,6 +171,18 @@ func main() {
 			},
 			Composite{
 				Layout: VBox{},
+				ContextMenuItems: []MenuItem{
+					Action{
+						Text: "I&nfo",
+						OnTriggered: mw.tv_ItemAtivated,
+					},
+					Action{
+						Text: "E&xit",
+						OnTriggered: func() {
+							mw.Close()
+						},
+					},
+				},
 				Children: []Widget{
 					TableView{
 						AssignTo:         &mw.tv,
