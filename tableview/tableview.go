@@ -173,7 +173,7 @@ func main() {
 				Layout: VBox{},
 				ContextMenuItems: []MenuItem{
 					Action{
-						Text: "I&nfo",
+						Text:        "I&nfo",
 						OnTriggered: mw.tv_ItemAtivated,
 					},
 					Action{
