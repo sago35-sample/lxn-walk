@@ -179,6 +179,16 @@ func main() {
 							fmt.Println()
 						},
 					},
+					PushButton{
+						Text: "AddAgeChecked",
+						OnClicked: func() {
+							for i, x := range mw.model.items {
+								if x.checked {
+									x.Age++
+								}
+							}
+						},
+					},
 				},
 			},
 			Composite{
