@@ -185,6 +185,7 @@ func main() {
 							for i, x := range mw.model.items {
 								if x.checked {
 									x.Age++
+									mw.model.PublishRowChanged(i)
 								}
 							}
 						},
