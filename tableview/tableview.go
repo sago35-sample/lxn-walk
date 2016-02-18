@@ -197,7 +197,7 @@ func main() {
 				ContextMenuItems: []MenuItem{
 					Action{
 						Text:        "I&nfo",
-						OnTriggered: mw.tv_ItemAtivated,
+						OnTriggered: mw.tv_ItemActivated,
 					},
 					Action{
 						Text: "E&xit",
@@ -218,7 +218,7 @@ func main() {
 							{Title: "年齢"},
 						},
 						Model:           mw.model,
-						OnItemActivated: mw.tv_ItemAtivated,
+						OnItemActivated: mw.tv_ItemActivated,
 					},
 				},
 			},
@@ -226,7 +226,7 @@ func main() {
 	}.Run()
 }
 
-func (mw *PersonMainWindow) tv_ItemAtivated() {
+func (mw *PersonMainWindow) tv_ItemActivated() {
 	msg := ``
 	for _, i := range mw.tv.SelectedIndexes() {
 		msg = msg + "\n" + mw.model.items[i].Name
