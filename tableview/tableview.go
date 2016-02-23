@@ -219,7 +219,10 @@ func main() {
 						},
 						Model: mw.model,
 						OnCurrentIndexChanged: func() {
-							fmt.Printf("OnCurrentIndexChanged: %v\n", mw.model.items[mw.tv.CurrentIndex()].Name)
+							i := mw.tv.CurrentIndex()
+							if 0 <= i {
+								fmt.Printf("OnCurrentIndexChanged: %v\n", mw.model.items[i].Name)
+							}
 						},
 						OnItemActivated: mw.tv_ItemActivated,
 					},
