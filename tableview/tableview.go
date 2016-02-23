@@ -217,7 +217,10 @@ func main() {
 							{Title: "名前"},
 							{Title: "年齢"},
 						},
-						Model:           mw.model,
+						Model: mw.model,
+						OnCurrentIndexChanged: func() {
+							fmt.Printf("OnCurrentIndexChanged: %v\n", mw.model.items[mw.tv.CurrentIndex()].Name)
+						},
 						OnItemActivated: mw.tv_ItemActivated,
 					},
 				},
